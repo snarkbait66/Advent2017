@@ -36,8 +36,4 @@ public class AoCSession {
         return credentials;
     }
 
-    public static void main(String[] args) {
-        setCredentials("GA1.2.2129401112.1511845994", "GA1.2.470036349.1521000507",
-                "53616c7465645f5fa2e284846efeec9ed98d0abdfaf361a6883dbbbf044512bfef48ca4b24e4267859491676d2a10b57");
-    }
 }

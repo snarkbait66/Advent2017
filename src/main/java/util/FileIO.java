@@ -27,8 +27,6 @@ public class FileIO {
 
     private FileIO() { }
 
-    //public static String SESSION_ID = "_ga=GA1.2.2129401112.1511845994; _gid=GA1.2.470036349.1521000507;"
-    // + "session=53616c7465645f5fa2e284846efeec9ed98d0abdfaf361a6883dbbbf044512bfef48ca4b24e4267859491676d2a10b57";
     private static final Logger LOGGER = Logger.getLogger( FileIO.class.getName() );
     /**
      * Load file into one String - assumes no line feeds
@@ -339,16 +337,4 @@ public class FileIO {
 
     }
 
-    public static void main(String[] args) {
-        //String session = "_ga=GA1.2.1393548264.1511828436; _gid=GA1.2.1223078752.1511828436; session=53616c7465645f5f65caadbcc5e7a5dd8bd42f5274dd6049469cbee0f698c6adf38f8cbb6656f08cd93ec597ebc1b06c";
-        //String url = "http://adventofcode.com/2015/day/18/input";
-        //List<String> test = getFromUrl(url, session);
-        //System.out.println(test);
-        //System.out.println(test.size());
-        //writeListToFile(test, "test1.txt");
-
-        /*List<String> input = getAOCInputForDay(2016,27,session);
-        System.out.println(input);*/
-
-    }
 }
