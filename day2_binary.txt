@@ -1,0 +1,92 @@
+JMP f div
+JMP f end
+.div
+JZR b 100
+SET r a
+SET p b
+SET t 1
+SET x r
+SET y p
+JMP n grt
+JZR w 4
+SHL t 1
+SHL p 1
+JNZ 1 -6
+SET x r
+XOR x p
+JZR x 5
+SET x r
+SET y p
+JMP n grt
+JNZ w 9
+SET x q
+SET y t
+JMP g add
+SET q z
+SET x r
+SET y p
+JMP h sub
+SET r z
+SHR p 1
+SHR t 1
+JNZ t -17
+RET f
+.sub
+SET z x
+SET e y
+SET d z
+NOT d d
+AND d e
+XOR z e
+SHL d 1
+SET e d
+JNZ e -6
+RET h
+.add
+SET z x
+SET e y
+SET d z
+AND d e
+XOR z e
+SHL d 1
+SET e d
+JNZ e -5
+RET g
+.grt
+SET d x
+XOR d y
+JZR d 30
+SET j d
+SHR j 1
+OR d j
+SET j d
+SHR j 2
+OR d j
+SET j d
+SHR j 4
+OR d j
+SET j d
+SHR j 8
+OR d j
+SET j d
+SHR j 16
+OR d j
+SET j d
+SHR j 1
+NOT j j
+SET k 2147483648
+OR j k
+AND d j
+SET j x
+XOR j k
+SET k 2147483647
+SET l y
+XOR l k
+AND j l
+AND d j
+JNZ d 3
+SET w 0
+JNZ 1 2
+SET w 1
+RET n
+.end
