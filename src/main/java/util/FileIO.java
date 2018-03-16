@@ -101,6 +101,14 @@ public class FileIO {
         if (day < 1 || day > 25) {
             throw new IllegalArgumentException("Day out of range");
         }
+
+        if (!Files.exists(Paths.get("session_config.properties"))) {
+            LOGGER.severe("No credentials information exists.\n"
+                    + "Use AoCSession.setCredentials using session information"
+                    + "found on the Advent of Code website after loggin in to your account.");
+            throw new RuntimeException("Unable to process input");
+        }
+
         String url = "http://adventofcode.com/" + year +
                 "/day/" + day + "/input";
         String filename = "puzzle_input\\advent" + year + "_day" + day + ".txt";

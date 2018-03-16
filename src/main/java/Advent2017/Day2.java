@@ -82,15 +82,16 @@ public class Day2 extends AdventOfCode {
 
 
     private long solvePart2(Integer[] a) {
-        Day2Bin program = new Day2Bin();
+//        Day2Bin program = new Day2Bin();
         Arrays.sort(a);
         for (int i = a.length - 1; i >= 0 ; i--) {
             for (int j = i - 1; j >=0 ; j--) {
-                program.set(a[i], a[j]);
+                if (a[i] % a[j] == 0) return a[i] / a[j];
+/*                program.set(a[i], a[j]);
                 program.process();
                 if (program.getRemainder() == 0) {
                     return program.getQuotient();
-                }
+                }*/
             }
         }
         return 0L;
@@ -109,27 +110,4 @@ public class Day2 extends AdventOfCode {
         return d != 0;
     }
 
-    public static void main(String[] args) {
-        String[][] p = { {"header1", "header2", "header3"} };
-        String[][] b= {{"1", "2", "3"}, {"4", "5", "6"}, {"7", "8", "9"}};
-
-        b = Stream.concat(Arrays.stream(p), Arrays.stream(b)).toArray(String[][]::new);
-        for (int i = 0; i < b.length; i++) {
-            System.out.println(Arrays.toString(b[i]));
-        }
-
-
-/*        int[] array = { 1, 3, 4, 4, 1, 1, 3, 3 };
-        Map<Integer, Integer> freq = Arrays.stream(array)
-                .boxed()
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.summingInt(e -> 1)));
-        final int n = 2;
-        List<Integer> topN = freq.entrySet().stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .map(Map.Entry::getKey)
-                .limit(n)
-                .collect(Collectors.toList());
-        System.out.println(topN);*/
-
-    }
 }

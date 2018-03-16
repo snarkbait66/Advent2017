@@ -20,6 +20,6 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        run(2017, 25);
+        run(2017, 2);
     }
 }

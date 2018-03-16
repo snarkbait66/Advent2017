@@ -22,12 +22,12 @@ public class Day1 extends AdventOfCode {
     }
 
     @Override
-    public Object part1() {
+    public Integer part1() {
         return solve(1);
     }
 
     @Override
-    public Object part2() {
+    public Integer part2() {
         return solve(array.length() / 2);
     }
 
@@ -44,18 +44,10 @@ public class Day1 extends AdventOfCode {
     // note that the only difference between parts 1 and 2 is the amount of
     // distance between the elements to test for equality
     private int solve(int dist) {
-        //int sum = 0;
         return IntStream.range(0, array.length())
                 .filter(x -> array.get(x).equals(array.get(x + dist)))
                 .map(x -> array.get(x))
                 .sum();
-/*        for (int i = 0; i < array.length(); i++) {
-            int next = array.get(i + dist);
-            if (array.get(i) == next) {
-                sum += next;
-            }
-        }
-        return sum;*/
     }
 
     // just for fun a bitwise logic way to convert the character
