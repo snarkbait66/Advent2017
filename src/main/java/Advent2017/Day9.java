@@ -1,8 +1,6 @@
 package Advent2017;
 
 import util.AdventOfCode;
-import util.FileIO;
-import util.Timer;
 
 import java.util.HashMap;
 import java.util.List;

@@ -16,6 +16,27 @@ public class Day8 extends AdventOfCode {
     private Map<String, Integer> registers = new HashMap<>();
     private List<Instruction> instructions;
 
+    // create map of functions for integer comparisons
+    private static final Map<String, BiPredicate<Integer, Integer>> comparisons = new HashMap<>();
+
+    static {
+        comparisons.put("==", Integer::equals);
+        comparisons.put("!=", (x, y) -> !x.equals(y));
+        comparisons.put("<", (x, y) -> x < y);
+        comparisons.put(">", (x, y) -> x > y);
+        comparisons.put("<=", (x, y) -> x <= y);
+        comparisons.put(">=", (x, y) -> x >= y);
+
+    }
+
+    // create map of functions for commands
+    private static final Map<String, ToIntBiFunction<Integer, Integer>> commands = new HashMap<>();
+
+    static {
+        commands.put("inc", (x, y) -> x + y);
+        commands.put("dec", (x, y) -> x - y);
+    }
+
     public Day8(List<String> input) {
         super(input);
         title = "I Heard You Like Registers";
@@ -27,14 +48,17 @@ public class Day8 extends AdventOfCode {
     public Object part1() {
         for (Instruction current : instructions) {
 
-
+            // initialize register if new
             registers.putIfAbsent(current.register, 0);
 
+            // test testRegister vs testAmount using proper comparison function
             if (comparisons.get(current.comparison)
                     .test(registers.getOrDefault(current.testRegister, 0),
                             current.testAmt)) {
 
                 int amountToChange = registers.get(current.register);
+
+                // apply amount to change using proper command function
                 int changed = commands.get(current.command)
                         .applyAsInt(amountToChange, current.amount);
                 registers.put(current.register, changed);
@@ -60,25 +84,6 @@ public class Day8 extends AdventOfCode {
                 .collect(Collectors.toList());
     }
 
-
-    private static final Map<String, BiPredicate<Integer, Integer>> comparisons = new HashMap<>();
-
-    static {
-        comparisons.put("==", (x, y) -> x.equals(y));
-        comparisons.put("!=", (x, y) -> !x.equals(y));
-        comparisons.put("<", (x, y) -> x < y);
-        comparisons.put(">", (x, y) -> x > y);
-        comparisons.put("<=", (x, y) -> x <= y);
-        comparisons.put(">=", (x, y) -> x >= y);
-
-    }
-
-    private static final Map<String, ToIntBiFunction<Integer, Integer>> commands = new HashMap<>();
-
-    static {
-        commands.put("inc", (x, y) -> x + y);
-        commands.put("dec", (x, y) -> x - y);
-    }
 
     private class Instruction {
         final String register;
