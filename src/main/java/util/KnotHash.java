@@ -9,6 +9,7 @@ import java.util.stream.IntStream;
 public class KnotHash {
     private int pos;
     private int skips;
+    private int bufferSize = 256;
     private static final int[] SUFFIX = { 17, 31, 73, 47, 23 };
 
     private int[] lengths;
@@ -21,6 +22,12 @@ public class KnotHash {
 
     public KnotHash(int[] array) {
         lengths = array;
+        reset();
+    }
+
+    public KnotHash(int[] array, int bufferSize) {
+        lengths = array;
+        this.bufferSize = bufferSize;
         reset();
     }
 
@@ -42,7 +49,9 @@ public class KnotHash {
     private void reset() {
         pos = 0;
         skips = 0;
-        buffer = new CircularList<>(IntStream.range(0, 256).boxed().toArray(Integer[]::new));
+        buffer = new CircularList<>(IntStream.range(0, bufferSize)
+                                        .boxed()
+                                        .toArray(Integer[]::new));
     }
 
     public void hash() {

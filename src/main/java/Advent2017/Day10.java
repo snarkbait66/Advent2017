@@ -1,10 +1,10 @@
 package Advent2017;
 
-import util.*;
+import util.AdventOfCode;
+import util.FileIO;
+import util.KnotHash;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class Day10 extends AdventOfCode {
 
@@ -16,7 +16,7 @@ public class Day10 extends AdventOfCode {
     }
 
     @Override
-    public Integer part1() {
+    public Object part1() {
         int[] data = FileIO.StringArrayToInt(input.get(0).split(","));
         KnotHash knothash = new KnotHash(data);
         knothash.hash();

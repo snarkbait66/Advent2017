@@ -73,6 +73,15 @@ public abstract class BaseGraph<T> implements Graph<T> {
         return path;
     }
 
+    /**
+     * returns true is vertex points for data start and goal
+     * are connected in the graph, using a DFS. data points must already
+     * be defined vertices in the graph.
+     * Unlike the search methods, does not return the constructed path.
+     * @param start T data for starting vertex
+     * @param goal T data for goal vertex
+     * @return true is connected
+     */
     public boolean isConnected(T start, T goal) {
         Vertex<T> u = vertices.get(start);
         Vertex<T> v = vertices.get(goal);
@@ -82,6 +91,14 @@ public abstract class BaseGraph<T> implements Graph<T> {
         return isConnected(u, v);
     }
 
+    /**
+     * Returns true if Vertices start and goal are connected
+     * in the graph, using a DFS. Vertices must exist in the
+     * graph.
+     * @param start vertex to start
+     * @param goal vertex to end
+     * @returntrue if connected
+     */
     public boolean isConnected(Vertex<T> start, Vertex<T> goal) {
         Search<T> search = new Search<>();
         return search.isConnected(start, goal);

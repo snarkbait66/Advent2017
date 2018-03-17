@@ -158,7 +158,7 @@ public class CircularList<T> implements Iterable<T> {
     }
 
     public List<T> toList() {
-        return new ArrayList<T>(Arrays.asList(array));
+        return new ArrayList<>(Arrays.asList(array));
     }
 
     @Override
@@ -186,10 +186,4 @@ public class CircularList<T> implements Iterable<T> {
         return Arrays.hashCode(array);
     }
 
-    public static void main(String[] args) {
-        CircularList<Integer> c = new CircularList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
-
-        System.out.println(c.put(200, -10));
-        System.out.println(c.get(0));
-    }
 }

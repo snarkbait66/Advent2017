@@ -82,6 +82,7 @@ public class Search<T> {
         if (verbose) System.out.println("Nodes visited for search type " + type.name() + " : " + nodesVisited);
         return found;
     }
+
     private void searchNeighborsUnweighted(Vertex<T> curr, SearchableList<Vertex<T>> queue) {
 
         // iterate through adjacent numEdges
