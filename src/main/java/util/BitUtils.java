@@ -7,8 +7,8 @@ import java.util.Arrays;
  */
 public class BitUtils {
 
-    public static boolean ONE = true;
-    public static boolean ZERO = false;
+    public static final boolean ONE = true;
+    public static final boolean ZERO = false;
     private static final int[] POSITION_MASKS = new int[32];
 
     static {

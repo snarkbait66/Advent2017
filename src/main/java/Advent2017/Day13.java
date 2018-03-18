@@ -27,7 +27,7 @@ public class Day13 extends AdventOfCode {
     }
 
     @Override
-    public Integer part1() {
+    public Object part1() {
         return layers.entrySet().stream()
                 .filter(x -> x.getKey() % ((x.getValue() - 1) * 2) == 0)
                 .mapToInt(x -> x.getKey() * x.getValue())
@@ -35,7 +35,7 @@ public class Day13 extends AdventOfCode {
     }
 
     @Override
-    public Integer part2() {
+    public Object part2() {
         int delay = 2;
 
         while (true) {
